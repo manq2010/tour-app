@@ -22,6 +22,8 @@ import { UsersComponent } from './pages/dashboard/users/users.component';
 import { AddUserComponent } from './pages/dashboard/users/add-user/add-user.component';
 import { EditUserComponent } from './pages/dashboard/users/edit-user/edit-user.component';
 import { ToursComponent } from './pages/tours/tours.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ToursComponent } from './pages/tours/tours.component';
     BrowserModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AsyncPipe
   ],
   providers: [
     TesterService,
