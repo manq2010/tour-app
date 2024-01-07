@@ -19,22 +19,22 @@ export class HomeComponent implements
     public apiService: ApisService
     ) {}
   ngOnInit(): void {
-    this.apiService.getStudents()
-    .subscribe(
-      {
-        next:(response)=> {
-          console.log("students", response)
-        },
-        error:(err)=>{
-          console.log(err)
-        }
-      }
-    )
+    // this.apiService.getStudents()
+    // .subscribe(
+    //   {
+    //     next:(response)=> {
+    //       console.log("students", response)
+    //     },
+    //     error:(err)=>{
+    //       console.log(err)
+    //     }
+    //   }
+    // )
 
-    this.students$=this.apiService.getStudents();
+    // this.students$=this.apiService.getStudents();
 
-    console.log("this.students", this.students)
-    console.log("this.students$", this.students$)
+    // console.log("this.students", this.students)
+    // console.log("this.students$", this.students$)
   }
 
   navigateto(page: string) {

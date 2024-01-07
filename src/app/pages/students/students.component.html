@@ -60,7 +60,63 @@
         </div>
     </header>
 
-    <section class="mt-20 p-10 flex justify-center text-4xl">Home page</section>
+    <section class="mt-20 p-10">
+        <div class="flex justify-between items-center m-3">
+            <h1 class="text-2xl font-semibold mb-10">All students</h1>
+            <a [routerLink]="'/public/student/form'" class="bg-blue-600 text-white rounded-md px-5 py-2">Add new student</a>
+        </div>
+       <ul role="list" class="divide-y divide-gray-100">
+           @for (item of (students$ | async); track $index) {
+           <li class="flex justify-around gap-x-6 py-5">
+               <div class="flex min-w-0 gap-x-4">
+                <a [routerLink]="['/public/students/', item.id]">
+                    <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                </a>
+                 <div class="min-w-0 flex-auto">
+                   <p class="text-sm font-semibold leading-6 text-gray-900"> {{item.name}}</p>
+                   <p class="mt-1 truncate text-xs leading-5 text-gray-500"> {{item.email}}</p>
+                 </div>
+               </div>
+               <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end gap-1">
+                    <a 
+                        [routerLink]="['/public/students/', item.id]" 
+                        type="button" 
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                        <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                        </svg>
+                        Edit
+                    </a>
+                    
+                    <button
+                    type="button"
+                    (click)="delete(item.id)"
+                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                        Delete
+                    </button>
+                 <!-- <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p> -->
+               </div>
+             </li>
+           }
+       </ul>
+         
+   
+       <!-- <div class="grid grid-cols-4 gap-5">
+           @for (item of (students$ | async); track $index) {
+               <div class="shadow rounded-md p-3">
+                   <div class="flex">
+                       <div class="bg-blue-500 rounded-full p-4">
+                        {{item.name[0]!.toUpperCase()}}
+                       </div> 
+                       <div class="shadow rounded-md p-3">
+                        {{item.name}}
+                       </div> 
+                   </div>
+               </div>
+           }
+       </div> -->
+   
+   </section>
 </body>
 
 

@@ -17,7 +17,14 @@ export class ApisService {
   //   )
   // }
 
-  getStudents=():Observable<Student[]>=> this.http.get<Student[]>(environment.serverAPI + 'Students')
+  getStudents=():Observable<Student[]>=> this.http.get<Student[]>(environment.serverAPI + 'Students');
 
+  addStudent=(data: Student)=> this.http.post(environment.serverAPI + 'Students', data);
 
+  getStudent=(id: number):Observable<Student>=> this.http.get<Student>(environment.serverAPI + 'Students/'+ id);
+
+  deleteStudent=(id: number):Observable<Student> => this.http.delete<Student>(environment.serverAPI + 'Students/'+ id);
+
+  editStudent=(id: number, data: Student):Observable<Student> => this.http.put<Student>(environment.serverAPI + 'Students/'+ id, data);
+  
 }

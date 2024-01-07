@@ -23,7 +23,13 @@ import { AddUserComponent } from './pages/dashboard/users/add-user/add-user.comp
 import { EditUserComponent } from './pages/dashboard/users/edit-user/edit-user.component';
 import { ToursComponent } from './pages/tours/tours.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { StudentsComponent } from './pages/students/students.component';
+import { StudentFormComponent } from './pages/students/student-form/student-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+// import { provideAnimations } from '@angular/platform-browser/animations';
+// import { provideToastr } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,9 @@ import { AsyncPipe } from '@angular/common';
     UsersComponent,
     AddUserComponent,
     EditUserComponent,
-    ToursComponent
+    ToursComponent,
+    StudentsComponent,
+    StudentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,13 +56,21 @@ import { AsyncPipe } from '@angular/common';
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AsyncPipe
+    AsyncPipe,
+    JsonPipe,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     TesterService,
     ApisService,
     AuthService,
-    DataService
+    DataService,
+    // provideToastr()
   ],
   bootstrap: [AppComponent]
 })
