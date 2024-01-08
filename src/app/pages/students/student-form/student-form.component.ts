@@ -32,17 +32,15 @@ export class StudentFormComponent implements OnInit, OnDestroy{
 
     this.paramsSubcription = this.activatedRouter.params.subscribe({
       next:(response)=> {
-        console.log(response['id'])
 
-        let id = response['id']
+        let id = response['id'];
         this.id = id;
         if(!id) return;
 
         this.apiService.getStudent(id).subscribe({
           next:(response) => {
             console.log(response)
-            this.form.patchValue(response)
-
+            this.form.patchValue(response.detailDescription)
             this.isEdit = true;
           },
           error:(err) => {

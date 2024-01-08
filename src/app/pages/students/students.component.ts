@@ -39,6 +39,7 @@ export class StudentsComponent implements OnInit{
 
   getAllStudents(){
     this.students$ = this.apiService.getStudents();
+    console.log("this.students$",  this.students$ )
   }
 
   showSuccess() {

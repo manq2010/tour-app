@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../enviroment';
-import { Student } from '../models/student.module';
+import { ResponseStudent, Student } from '../models/student.module';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class ApisService {
 
   addStudent=(data: Student)=> this.http.post(environment.serverAPI + 'Students', data);
 
-  getStudent=(id: number):Observable<Student>=> this.http.get<Student>(environment.serverAPI + 'Students/'+ id);
+  getStudent=(id: number):Observable<ResponseStudent>=> this.http.get<ResponseStudent>(environment.serverAPI + 'Students/'+ id);
 
   deleteStudent=(id: number):Observable<Student> => this.http.delete<Student>(environment.serverAPI + 'Students/'+ id);
 

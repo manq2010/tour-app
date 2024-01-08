@@ -5,4 +5,11 @@ export interface Student {
     phoneNumber: string
     email: string
 }
+
+export interface ResponseStudent {
+    status: string
+    message: string
+    detail: any
+    detailDescription: Student
+}
   
