@@ -75,6 +75,7 @@ export class StudentFormComponent implements OnInit, OnDestroy{
     // console.log(this.form.value)
 
     if(!this.isEdit){
+      // Adding a new student
       this.studentformSubcription =  this.apiService.addStudent(this.form.value).subscribe({
         next:(response) => {
           console.log(response)
@@ -86,6 +87,7 @@ export class StudentFormComponent implements OnInit, OnDestroy{
         },
       })
     } else {
+      // Editing an existing student
       this.apiService.editStudent(this.id, this.form.value).subscribe({
         next:(response) => {
           console.log(response)
@@ -106,6 +108,10 @@ export class StudentFormComponent implements OnInit, OnDestroy{
 
   showEditSuccess() {
     this.toastr.success('Student successfully edited');
+  }
+
+  showInvalidSuccess() {
+    this.toastr.error("Form has errors")
   }
 
   navigateto(page: string) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Tester } from '../models/test.module';
+import { Tester } from '../models/test.model';
 
 
 @Injectable({

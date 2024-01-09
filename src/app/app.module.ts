@@ -22,12 +22,14 @@ import { UsersComponent } from './pages/dashboard/users/users.component';
 import { AddUserComponent } from './pages/dashboard/users/add-user/add-user.component';
 import { EditUserComponent } from './pages/dashboard/users/edit-user/edit-user.component';
 import { ToursComponent } from './pages/tours/tours.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { StudentsComponent } from './pages/students/students.component';
 import { StudentFormComponent } from './pages/students/student-form/student-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { customInterceptor } from './services/custom.interceptor';
+import { MatInputModule } from '@angular/material/input';
 // import { provideAnimations } from '@angular/platform-browser/animations';
 // import { provideToastr } from 'ngx-toastr';
 
@@ -59,13 +61,20 @@ import { ToastrModule } from 'ngx-toastr';
     AsyncPipe,
     JsonPipe,
     ReactiveFormsModule,
+    FormsModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    MatInputModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: customInterceptor,
+      multi: true,
+    },
     TesterService,
     ApisService,
     AuthService,

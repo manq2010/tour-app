@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApisService } from '../../services/apis.service';
 import { Observable } from 'rxjs';
-import { Student } from '../../models/student.module';
+import { Student } from '../../models/student.model';
 
 @Component({
   selector: 'app-home',

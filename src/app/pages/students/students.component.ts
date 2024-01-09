@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApisService } from '../../services/apis.service';
-import { Student } from '../../models/student.module';
+import { Student } from '../../models/student.model';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
